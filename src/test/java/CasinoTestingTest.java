@@ -1,13 +1,9 @@
-package Java.src;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CasinoTestingTest {
 
@@ -29,16 +25,21 @@ class CasinoTestingTest {
     }
 
     @Test
-    public HashMap<String, Integer> evaluateHand() {
-        //given
+    public boolean evaluateHand() {
         CasinoTesting game = new CasinoTesting();
-
-        //when
-        ArrayList<Integer> handEval = game.getroll();
-
-        //then
-        HashMap<String, Integer> expected = game.evaluateHand(handEval);
-        handEval.clear();
+        ArrayList<java.lang.Integer> roll = new ArrayList<>();
+        roll.add(1);
+        roll.add(1);
+        roll.add(1);
+        roll.add(1);
+        roll.add(1);
+        HashMap<String, Integer> map = game.evaluateHand(roll);
+        Integer expected = map.get("ones");
+        int actual = 5;
+        if (expected == actual){
+            return true;
+        }
+        return false;
     }
 
     @Test
@@ -51,10 +52,7 @@ class CasinoTestingTest {
         roll.add(1);
         roll.add(1);
         HashMap<String, Integer> map = game.evaluateHand(roll);
-        int expected = map.get("ones");
-        int actual = 5;
-        Assert.assertEquals(expected, actual);
-        roll.clear();
+
     }
 
     @Test
@@ -75,13 +73,17 @@ class CasinoTestingTest {
 
     @Test
     void getWinner() {
+        //given
+        CasinoTesting game = new CasinoTesting();
+        game.houseRank = 5;
+        game.p2handRank = 4;
+        String expected = "HOUSE WINS!!!!";
+        //when
+        String actual = game.getWinner();
+        //then
+        Assert.assertEquals(actual, expected);
+
     }
 
-    @Test
-    void isOver() {
-    }
 
-    @Test
-    void run() {
-    }
 }

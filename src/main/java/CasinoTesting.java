@@ -1,9 +1,6 @@
-package Java.src;
-
 import java.util.*;
 import java.util.Scanner;
 
-import static Java.src.Dice.roll;
 
 public class CasinoTesting {
     Scanner scanner = new Scanner(System.in);
@@ -11,8 +8,8 @@ public class CasinoTesting {
     HashMap<String, Integer> hand = new HashMap<>();
     String klondikeHand = "";
     int handRank;
-    int houseRank;
-    int p2handRank;
+    public int houseRank;
+    public int p2handRank;
     String WinMsg = "";
 
     public void klondikeGame() {
@@ -53,7 +50,7 @@ public class CasinoTesting {
     }
 
     public ArrayList<Integer> getroll() {
-        roll(5);
+        Dice.roll(5);
         return diceRoll;
     }
 
@@ -65,7 +62,6 @@ public class CasinoTesting {
         hand.put("fours", Collections.frequency(diceRoll, 4));
         hand.put("fives", Collections.frequency(diceRoll, 5));
         hand.put("sixes", Collections.frequency(diceRoll, 6));
-
 
         return hand;
     }

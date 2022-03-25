@@ -1,5 +1,3 @@
-package Java.src;
-
 import java.util.ArrayList;
 
 public class Dice {
